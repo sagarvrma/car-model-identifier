@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Prediction Result</title>
+    <style>
+      body { font-family: Arial, sans-serif; text-align: center; }
+      h1 { margin-bottom: 20px; }
+      img { max-width: 400px; height: auto; margin-bottom: 20px; }
+      table { margin: 0 auto; border-collapse: collapse; width: 50%; }
+      table, th, td { border: 1px solid black; padding: 10px; }
+    </style>
+  </head>
+  <body>
+    <h1>Prediction Result</h1>
+    <img src="{{ image_path }}" alt="Uploaded Car Image">
+    <h2>Top 5 Predictions:</h2>
+    <table>
+      <tr>
+        <th>Car Model</th>
+        <th>Probability</th>
+      </tr>
+      {% for model, probability in predictions %}
+      <tr>
+        <td>{{ model }}</td>
+        <td>{{ probability * 100 | round(2) }}%</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <br>
+    <a href="/">Predict Another Image</a>
+  </body>
+</html>
